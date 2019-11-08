@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import CharacterItem from './CharacterItem';
+import { useQuery } from '@apollo/react-hooks';
+import { Link } from 'react-router-dom';
 
 const CHARACTERS_QUERY = gql`
   query getPeople {
@@ -16,26 +16,19 @@ const CHARACTERS_QUERY = gql`
   }
 `;
 
-export default class Characters extends Component {
-  render() {
-    return (
-      <Fragment>
-        <p>Characters</p>
-        <Query query={CHARACTERS_QUERY}>
-          {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error :(</p>;
-
-            return (
-              <Fragment>
-                {data.allPeople.edges.map(({ node: { id, name } }) => (
-                  <CharacterItem key={id} id={id} name={name} />
-                ))}
-              </Fragment>
-            );
-          }}
-        </Query>
-      </Fragment>
-    );
-  }
+export default function Characters() {
+  const { loading, data } = useQuery(CHARACTERS_QUERY);
+  if (loading) return <p>Loading...</p>;
+  return (
+    <div>
+      <p>Characters</p>
+      <div>
+        {data.allPeople.edges.map(({ node: { id, name } }) => (
+          <Link to={`/character/${id}`} key={id}>
+            {name}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
 }

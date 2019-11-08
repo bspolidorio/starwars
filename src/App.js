@@ -1,24 +1,19 @@
 import React from 'react';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from '@apollo/react-hooks';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Characters from './components/Characters';
 import Character from './components/Character';
-
-const client = new ApolloClient({
-  uri: 'https://rxrossi-swapi.herokuapp.com'
-});
+import Film from './components/Film';
+import { Link } from 'react-router-dom';
 
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <h2>My first Apollo app</h2>
-        </div>
-        <Route exact path="/" component={Characters} />
-        <Route exact path="/character/:id" component={Character} />
-      </Router>
-    </ApolloProvider>
+    <Router>
+      <div>
+        <Link to="/">Star Wars</Link>
+      </div>
+      <Route exact path="/" component={Characters} />
+      <Route exact path="/character/:id" component={Character} />
+      <Route exact path="/film/:id" component={Film} />
+    </Router>
   );
 }
