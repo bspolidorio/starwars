@@ -18,17 +18,39 @@ const CHARACTERS_QUERY = gql`
 
 export default function Characters() {
   const { loading, data } = useQuery(CHARACTERS_QUERY);
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [peopleEdges, setPeopleEdges] = React.useState([]);
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+  };
+
+  React.useEffect(() => {
+    if (data) {
+      const results = data.allPeople.edges.filter(({ node: { name } }) =>
+        name.toLowerCase().includes(searchTerm)
+      );
+      setPeopleEdges(results);
+    }
+  }, [searchTerm, data]);
+
   if (loading) return <p>Loading...</p>;
+
   return (
     <div>
       <p>Characters</p>
-      <div>
-        {data.allPeople.edges.map(({ node: { id, name } }) => (
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
+      <ul>
+        {peopleEdges.map(({ node: { id, name } }) => (
           <Link to={`/character/${id}`} key={id}>
             {name}
           </Link>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
