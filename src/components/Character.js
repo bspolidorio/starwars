@@ -2,6 +2,17 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
+import {
+  GlobalStyle,
+  CharWrapper,
+  CharHeader,
+  CharAvatar,
+  CharDetailsWrapper,
+  CharDetails,
+  CharFilms
+} from '../styles';
+import logo from '../img/logo-sw.png';
+import avatar from '../img/icn-avatar-big.png';
 
 const CHARACTER_QUERY = gql`
   query getPersonById($id: ID) {
@@ -21,11 +32,16 @@ const CHARACTER_QUERY = gql`
         films {
           id
           title
+          releaseDate
         }
       }
     }
   }
 `;
+
+function getYear(date) {
+  return date.split('-', 1);
+}
 
 export default function Character({ match }) {
   let { id } = match.params;
@@ -44,25 +60,58 @@ export default function Character({ match }) {
   } = data.person;
 
   return (
-    <div>
-      <div>
-        <p>Name: {name}</p>
-        <p>Gender: {gender}</p>
-        <p>Birth year: {birthYear}</p>
-        <p>Eye color: {eyeColor}</p>
-        <p>Hair color: {hairColor}</p>
-        <p>Homeworld: {homeworld}</p>
-        <p>Height: {height}</p>
-        <p>Skin color: {skinColor}</p>
-        <p>Films:</p>
-        <div>
-          {data.person.filmConnection.films.map(({ title, id }) => (
-            <Link to={`/film/${id}`} key={id}>
-              {title}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
+    <React.Fragment>
+      <GlobalStyle />
+      <CharWrapper>
+        <CharHeader>
+          <Link to="/">
+            <img src={logo} alt="logo"></img>
+          </Link>
+          <p>characters</p>
+        </CharHeader>
+        <CharAvatar>
+          <img src={avatar} alt="avatar"></img>
+          <span>{name}</span>
+        </CharAvatar>
+        <CharDetailsWrapper>
+          <p>Details</p>
+          <CharDetails>
+            <p>
+              {gender} <br /> <span>Gender</span>
+            </p>
+            <p>
+              {birthYear} <br /> <span>Birth year</span>
+            </p>
+            <p>
+              {eyeColor} <br /> <span>Eye color</span>
+            </p>
+            <p>
+              {hairColor} <br /> <span>Hair color</span>
+            </p>
+            <p>
+              {homeworld} <br /> <span>Homeworld</span>
+            </p>
+            <p>
+              {height} <br /> <span>Height</span>
+            </p>
+            <p>
+              {skinColor} <br /> <span>Skin color</span>
+            </p>
+          </CharDetails>
+          <CharFilms>
+            <p>Films</p>
+            {data.person.filmConnection.films.map(
+              ({ title, id, releaseDate }) => (
+                <li>
+                  <Link to={`/film/${id}`} key={id}>
+                    {title} ({getYear(releaseDate)})
+                  </Link>
+                </li>
+              )
+            )}
+          </CharFilms>
+        </CharDetailsWrapper>
+      </CharWrapper>
+    </React.Fragment>
   );
 }
