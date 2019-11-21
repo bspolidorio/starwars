@@ -110,7 +110,7 @@ export const CharDetails = styled.div`
   dl {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: space-between;
   }
   div {
     display: flex;
@@ -134,9 +134,6 @@ export const CharDetails = styled.div`
     p {
       text-align: center;
     }
-    dl {
-      justify-content: start;
-    }
     dt {
       text-align: center;
     }
@@ -155,7 +152,8 @@ export const CharFilms = styled.ul`
   li {
     font-size: 1.5rem;
     line-height: 3.333rem;
-    a:visited,
+    a:link,
+    :visited,
     :hover,
     :active {
       color: #007da9;

@@ -183,4 +183,18 @@ export const Avatar = styled.li`
     font-size: 1.333rem;
     color: #4e5760;
   }
+  @media (max-width: 450px) {
+    padding-top: 10px;
+    width: 135px;
+    height: 160px;
+    margin: 5px;
+    img {
+      width: 80px;
+      padding-top: 5px;
+    }
+    span {
+      margin-top: 20px;
+      font-size: 1.166rem;
+    }
+  }
 `;
