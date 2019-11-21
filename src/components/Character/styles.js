@@ -97,7 +97,7 @@ export const DetailsWrapper = styled.div`
   flex-direction: column;
   max-width: 400px;
   @media (max-width: 450px) {
-    max-width: 300px;
+    max-width: 320px;
     margin-top: 30px;
   }
 `;

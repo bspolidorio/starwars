@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
 
 *{
   box-sizing: border-box;
+  margin: 0;
+	padding: 0;
 }
 
 html{
@@ -15,10 +17,7 @@ html{
 }
 
 body{
-  margin: 0;
-	padding: 0;
   min-height: 2000px;
-  min-width: 480px;
 	border: none;
   font-family: 'Roboto';
   font-size: 1rem;
@@ -64,7 +63,7 @@ export const HomeHeader = styled.div`
     width: 350px;
     margin: 0 auto;
   }
-  input[type='text'] {
+  input {
     font-size: 1.5rem;
     color: #a0a9ab;
     width: 430px;
@@ -77,6 +76,23 @@ export const HomeHeader = styled.div`
     background-position: 95% 50%;
     background-repeat: no-repeat;
     background-size: 4%;
+  }
+  @media (max-width: 450px) {
+    padding-top: 80px;
+    p {
+      font-size: 10px;
+      margin-top: 10px;
+      letter-spacing: 3px;
+    }
+    img {
+      width: 150px;
+    }
+    input {
+      width: 280px;
+      margin-top: 30px;
+      font-size: 1rem;
+      padding: 5px 10px;
+    }
   }
 `;
 
@@ -108,5 +124,20 @@ export const Avatar = styled.li`
     margin-top: 40px;
     font-size: 1.333rem;
     color: #4e5760;
+  }
+
+  @media (max-width: 450px) {
+    padding-top: 10px;
+    width: 135px;
+    height: 160px;
+    margin: 5px;
+    img {
+      width: 80px;
+      padding-top: 5px;
+    }
+    span {
+      margin-top: 20px;
+      font-size: 1.166rem;
+    }
   }
 `;
