@@ -31,7 +31,7 @@ export default function Home() {
   React.useEffect(() => {
     if (data) {
       const results = data.allPeople.edges.filter(({ node: { name } }) =>
-        name.toLowerCase().includes(searchTerm)
+        name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setPeopleEdges(results);
     }

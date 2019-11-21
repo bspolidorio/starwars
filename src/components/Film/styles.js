@@ -17,7 +17,6 @@ html{
 
 body{
   min-height: 2000px;
-  min-width: 480px;
 	border: none;
   font-family: 'Roboto';
   font-size: 1rem;
