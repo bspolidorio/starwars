@@ -3,24 +3,35 @@ import bgIndex from './img/bg-index.png';
 import bgChar from './img/bg-char.png';
 import searchicon from './img/icn-search.svg';
 
+/* Global Styles */
+
+/* Colors for reference only */
+/* #4E5760 #FFFFFF #007DA9 #A0A9AB */
+
 export const GlobalStyle = createGlobalStyle`
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 *{
   box-sizing: border-box;
-  #4E5760
-#FFFFFF
-#007DA9
-#A0A9AB
 }
 
-body, p, ul {
-  
-  font-family: Roboto;
+html{
   font-size: 12px;
+}
+
+body{
   margin: 0;
-  padding: 0;
+	padding: 0;
+  min-height: 2000px;
+	border: none;
+  font-family: 'Roboto';
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.025rem;
+  line-height: 2.1428;
+  color: #4E5760;
+  background: #000000;
 }
 
 ul {
@@ -30,21 +41,14 @@ ul {
 a {
   text-decoration: none;
 }
-
-body{
-  background-color: black;
-}
 `;
 
 export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   background-image: url(${bgIndex});
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: black;
-  min-height: 2000px;
 `;
 
 export const HomeHeader = styled.div`
@@ -54,11 +58,11 @@ export const HomeHeader = styled.div`
   padding-top: 263px;
   p {
     margin-top: 21px;
-    color: white;
+    color: #ffffff;
     text-transform: uppercase;
     text-align: center;
-    font-size: 24px;
-    letter-spacing: 7px;
+    font-size: 2rem;
+    letter-spacing: 0.583rem;
   }
   img {
     display: block;
@@ -66,16 +70,16 @@ export const HomeHeader = styled.div`
     margin: 0 auto;
   }
   input[type='text'] {
-    font-size: 18px;
-    color: #808080;
+    font-size: 1.5rem;
+    color: #a0a9ab;
     width: 430px;
-    border: 1px solid #383838;
+    border: 1px solid #4e5760;
     border-radius: 4px;
     background-color: transparent;
     padding: 15px 30px;
     margin-top: 80px;
     background-image: url(${searchicon});
-    background-position: right 18px top 15px;
+    background-position: 95% 50%;
     background-repeat: no-repeat;
     background-size: 4%;
   }
@@ -95,9 +99,8 @@ export const Avatar = styled.li`
   width: 200px;
   height: 240px;
   margin: 10px;
-  border: #383838 solid 1px;
+  border: #4e5760 solid 1px;
   border-radius: 4px;
-  color: #808080;
   text-align: center;
   img {
     display: block;
@@ -116,10 +119,14 @@ export const CharWrapper = styled.div`
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto;
   grid-template-areas:
-    'header header header header header header header '
-    '.  avatar avatar details details details . ';
+    ' header header header header header header header '
+    ' .  avatar avatar details details details . ';
   max-width: 100%;
   margin: 0 auto;
+
+  @media (max-width: 400px) {
+    display: block;
+  }
 `;
 export const CharHeader = styled.div`
   grid-area: header;

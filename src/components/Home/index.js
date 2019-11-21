@@ -2,15 +2,10 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { Link } from 'react-router-dom';
-import {
-  GlobalStyle,
-  HomeWrapper,
-  HomeHeader,
-  CharList,
-  Avatar
-} from '../styles';
-import logo from '../img/logo-sw.png';
-import avatar from '../img/icn-avatar-big.png';
+import * as S from './styles';
+import Loading from '../Loading';
+import logo from '../../assets/img/logo-sw.png';
+import avatar from '../../assets/img/icn-avatar-big.png';
 
 const CHARACTERS_QUERY = gql`
   query getPeople {
@@ -42,15 +37,15 @@ export default function Home() {
     }
   }, [searchTerm, data]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
 
   return (
     <React.Fragment>
-      <GlobalStyle />
-      <HomeWrapper>
-        <HomeHeader>
+      <S.GlobalStyle />
+      <S.HomeWrapper>
+        <S.HomeHeader>
           <Link to="/">
-            <img src={logo} alt="logo"></img>
+            <img src={logo} alt=""></img>
           </Link>
           <p>characters</p>
           <input
@@ -59,18 +54,18 @@ export default function Home() {
             value={searchTerm}
             onChange={handleChange}
           />
-        </HomeHeader>
-        <CharList>
+        </S.HomeHeader>
+        <S.CharList>
           {peopleEdges.map(({ node: { id, name } }) => (
-            <Link to={`/character/${id}`} key={id}>
-              <Avatar>
+            <S.Avatar>
+              <Link to={`/character/${id}`} key={id}>
                 <img src={avatar} alt="avatar"></img>
                 <span>{name}</span>
-              </Avatar>
-            </Link>
+              </Link>
+            </S.Avatar>
           ))}
-        </CharList>
-      </HomeWrapper>
+        </S.CharList>
+      </S.HomeWrapper>
     </React.Fragment>
   );
 }
