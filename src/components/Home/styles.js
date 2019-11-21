@@ -123,12 +123,12 @@ export const Avatar = styled.li`
     display: block;
     margin-top: 40px;
     font-size: 1.333rem;
-    a:link,
-    :visited,
-    :hover,
-    :active {
-      color: #4e5760;
-    }
+  }
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: #4e5760;
   }
 
   @media (max-width: 450px) {

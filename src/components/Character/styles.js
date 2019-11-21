@@ -152,12 +152,12 @@ export const CharFilms = styled.ul`
   li {
     font-size: 1.5rem;
     line-height: 3.333rem;
-    a:link,
-    :visited,
-    :hover,
-    :active {
-      color: #007da9;
-    }
+  }
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    color: #007da9;
   }
 
   @media (max-width: 450px) {
