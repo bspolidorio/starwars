@@ -2,7 +2,8 @@
 
 A personal project to test my skills
 
-[Check it online](https://bspolidorio.github.io/starwars/)
+[Check it online](https://starwars-react.herokuapp.com/)
+(Hosted for free on Heroku, enjoy your coffee while waiting for the app to start. :) )
 
 ## Stack
 - React.js
