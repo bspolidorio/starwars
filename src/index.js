@@ -7,7 +7,7 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
-  uri: 'http://graphql.org/swapi-graphql',
+  uri: 'https://swapi-graphql.eskerda.vercel.app/',
   cache: new InMemoryCache()
 });
 
