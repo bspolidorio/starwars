@@ -7,7 +7,7 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
-  uri: 'https://rxrossi-swapi.herokuapp.com',
+  uri: 'http://graphql.org/swapi-graphql',
   cache: new InMemoryCache()
 });
 
